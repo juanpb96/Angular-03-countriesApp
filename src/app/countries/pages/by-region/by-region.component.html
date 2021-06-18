@@ -1,0 +1,29 @@
+<h3>Search by region <small>{{ activeRegion | titlecase }}</small></h3>
+<hr>
+
+<h4>Choose a region</h4>
+
+<div class="row">
+    <div class="col">
+        <!-- With [class.className] is possible to insert a class based on a condition -->
+        <!-- [class.btn-primary]="region === activeRegion" -->
+
+        <!-- With [ngClass] we can add or remove, using an object, multiple classes based on conditions -->
+        <!-- [ngClass]="{
+            'btn-primary': region === activeRegion,
+            'btn-outline-primary': region !== activeRegion
+        }" -->
+
+        <button *ngFor="let region of regions"
+                [class]="getCSSClass( region )"
+                (click)="activateRegion( region )">
+            {{ region | titlecase }}
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <app-countries-table [countries]="countries"></app-countries-table>
+    </div>
+</div>

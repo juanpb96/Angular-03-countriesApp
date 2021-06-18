@@ -1,0 +1,24 @@
+<h2>By Capital</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-countries-input (onEnter)="search( $event )"
+                             placeholder="Search Capital...">
+        </app-countries-input>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="isError" class="alert alert-danger">
+    We can't retrive info related to: {{ term }}
+</div>
+
+<div *ngIf="!isError" class="row">
+    <div class="col">
+
+        <app-countries-table [countries]="countries"></app-countries-table>
+
+    </div>
+</div>

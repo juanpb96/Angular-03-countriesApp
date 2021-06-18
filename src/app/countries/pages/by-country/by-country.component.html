@@ -1,0 +1,40 @@
+<h2>By Country</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-countries-input (onEnter)="search( $event )"
+                             (onDebounce)="suggestions( $event )"
+                             placeholder="Search Country...">
+        </app-countries-input>
+    </div>
+</div>
+
+<ul  *ngIf="showSuggestions" class="list-group">
+    <li *ngFor="let country of suggestedCountries"
+        class="list-group-item list-group-item-action">
+        <a  class="nav-link"
+            [routerLink]="['/country', country.alpha2Code]">
+            {{ country.name }}
+        </a>
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <a  class="nav-link" (click)="searchSuggested( term )">
+            Search "{{ term }}"
+        </a>
+    </li>
+</ul>
+
+<hr>
+
+<div *ngIf="isError" class="alert alert-danger">
+    We can't retrive info related to: {{ term }}
+</div>
+
+<div *ngIf="!isError" class="row">
+    <div class="col">
+
+        <app-countries-table [countries]="countries"></app-countries-table>
+
+    </div>
+</div>

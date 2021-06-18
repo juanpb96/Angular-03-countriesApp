@@ -1,0 +1,18 @@
+<h2>Searchs</h2>
+<hr>
+<!-- Use router link attribute with the path defined in app-routing
+    It avoids a full refresh of the page -->
+<ul class="list-group">
+    <!-- Use routerLinkActive attribute to inject a css class -->
+    <!-- When a path is '' the [routerLinkActiveOptions] must be set to { exact: true } -->
+    <li routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="list-group-item">Search Country</li>
+    <li routerLink="region"
+        routerLinkActive="active"
+        class="list-group-item">By Region</li>
+    <li routerLink="capital"
+        routerLinkActive="active"
+        class="list-group-item">By Capital</li>
+</ul>
